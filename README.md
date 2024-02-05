@@ -16,3 +16,28 @@
 
 
 
+# Food Ordering App
+
+ *Header
+  -Logo
+  -Nav Items
+ *Body
+  -Search
+  -Restaurant Container
+    ->Restaurant Card  -image -starrating -cusines -deliverytime
+ Footer
+   -copyright
+   -Links
+
+
+# Two Types Export Import
+- default 
+   export default Component
+   import Component from "/path"
+- named
+    export const Component =""
+    import {Component} from "/path"
+
+# React Hooks
+- useState() - superpowerful State Variable in react
+- useEffect()
