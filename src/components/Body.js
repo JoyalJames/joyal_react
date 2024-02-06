@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
-// import restoList from "../utils/mockData";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [state,setState]=useState([]);
@@ -17,7 +17,7 @@ const Body = () => {
         setState(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
     if(state.length === 0){
-        return <h1>Loading.....</h1>
+        return <Shimmer/>
     }
     return(
         <div className="body">
