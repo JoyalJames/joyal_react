@@ -16,10 +16,12 @@ const Body = () => {
         // optional chaining
         setState(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
-    if(state.length === 0){
-        return <Shimmer/>
-    }
-    return(
+    // Conditional Rendering
+    // if(state.length === 0){
+    //     return <Shimmer/>
+    // }
+    // Ternary Opration
+    return state.length === 0 ?  <Shimmer/> : (
         <div className="body">
             <div className="filter">
                 <button id="filter-btn" onClick={()=>{
