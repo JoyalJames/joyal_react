@@ -1,9 +1,24 @@
 import RestaurantCard from "./RestaurantCard";
-import restoList from "../utils/mockData";
-import { useState } from "react";
+// import restoList from "../utils/mockData";
+import { useEffect, useState } from "react";
 
 const Body = () => {
-    const [state,setState]=useState(restoList);
+    const [state,setState]=useState([]);
+
+    useEffect(()=>{
+        fetchData();
+    },[]);
+
+    const fetchData = async ()=>{
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=9.591566799999999&lng=76.5221531&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const json = await data.json();
+        console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+        // optional chaining
+        setState(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    }
+    if(state.length === 0){
+        return <h1>Loading.....</h1>
+    }
     return(
         <div className="body">
             <div className="filter">
@@ -16,7 +31,7 @@ const Body = () => {
         {/* Always use key={} */}
         {/* not using keys(not acceptable) <<< index as key(if no unique id use) <<<  unique id(best practice) */}
                 {
-                    state.map((resto,index)=><RestaurantCard key={index} restList={resto}/>)
+                    state.map((resto)=><RestaurantCard key={resto?.info.parentId} restList={resto}/>)
                 }           
             </div>
         </div>

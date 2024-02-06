@@ -29,16 +29,20 @@
 .restro-container{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 .res-cards{
     padding: 5px;
     margin: 5px;
     width: 250px;
-    border: 1px solid rgb(140, 140, 140);
+    border-radius: 4px;
+    background-color: rgb(224, 229, 229);
 }
 .res-cards:hover{
     cursor: pointer;
-    border: 2px solid black;
+    box-shadow: 0 0 6px #5d5d5d29;
+    border-radius: 4px;
+    background-color: azure;
 }
 .res-logo{
     width: 100%;
@@ -46,4 +50,8 @@
 }
 #filter-btn{
     cursor: pointer;
+    margin: 10px;
+    color: rebeccapurple;
+    box-shadow: 0 0 6px #5d5d5d29;
+    background-color: rgb(40, 138, 224);
 }
