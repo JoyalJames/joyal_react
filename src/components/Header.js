@@ -1,4 +1,5 @@
 import { LOGO_URL } from "../utils/constants";
+import { LOGIN } from "../utils/constants";
 import { useState } from "react";
 const Header = () =>{
     const [state, setState] = useState("Login");
@@ -13,7 +14,7 @@ const Header = () =>{
                 <li>About Us</li>
                 <li>Contact Us</li>
                 <li>Cart</li>
-                <button onClick={()=>{
+                <button className="login" onClick={()=>{
                     state === "Login" ? setState("Logout") : setState("Login")
                 }}>{state}</button>
             </ul>

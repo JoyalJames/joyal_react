@@ -4,6 +4,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [state,setState]=useState([]);
+    const[search,setSearch] = useState("");
+    const [filteredRestaurant,setFilteredRestaurant] = useState([]);
 
     useEffect(()=>{
         fetchData();
@@ -14,26 +16,32 @@ const Body = () => {
         const json = await data.json();
         console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
         // optional chaining
-        setState(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setState(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+
     }
-    // Conditional Rendering
-    // if(state.length === 0){
-    //     return <Shimmer/>
-    // }
-    // Ternary Opration
+  
     return state.length === 0 ?  <Shimmer/> : (
         <div className="body">
             <div className="filter">
-                <button id="filter-btn" onClick={()=>{
-                    const filteredData = state.filter((e)=>e.data.avgRating>4)
-                    setState(filteredData);
+                <div className="search">
+                    <input type="text" className="search-box" value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
+                    <button onClick={()=>{
+                        // filter with actual
+                        const fiteredSearch = state.filter((res)=> res?.info?.name.toLowerCase().includes(search.toLowerCase()));
+                        setFilteredRestaurant(fiteredSearch);
+                    }} >Searchee</button>
+                </div>
+                <button id="filter-btn" 
+                onClick={()=>{
+                    const filteredData = state.filter((resto)=>resto?.info?.avgRating>4.3)
+                    setFilteredRestaurant(filteredData);
                 }}>Top Rated</button>
             </div>
             <div className="restro-container">
-        {/* Always use key={} */}
-        {/* not using keys(not acceptable) <<< index as key(if no unique id use) <<<  unique id(best practice) */}
                 {
-                    state.map((resto)=><RestaurantCard key={resto?.info.parentId} restList={resto}/>)
+                    // map filtered
+                    filteredRestaurant.map((resto)=><RestaurantCard key={resto?.info.parentId} restList={resto}/>)
                 }           
             </div>
         </div>
