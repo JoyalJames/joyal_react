@@ -25,5 +25,13 @@ class About extends Component{
         )
     }
 }
-
+//  ->Parent Constructor
+//      ->Parent Render
+//          ->JoyalChild Constructor
+//          ->JoyalChild Render
+//          ->HelloChild Constructor
+//          ->HelloChild Render
+//  ->JoyalChild Component Did Mount
+//  ->HelloChild Component Did Mount
+//-> Parent Component Did Mount
 export default About;
