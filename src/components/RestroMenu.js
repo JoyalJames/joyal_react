@@ -13,14 +13,14 @@ const RestroMenu = ()=>{
         const data = await fetch(MENU_API + resId)
         const json = await data.json();
         console.log(json.data.cards[0].card.card.info);
-        console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
+        console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
         setMenuCard(json.data);
 
     }
     if (menuCard === null) return <Shimmer/>
     // .cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards
     const {name,avgRating,areaName,ratingSlab} = menuCard?.cards[0].card.card.info;
-    const {itemCards} =  menuCard?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    const {itemCards} =  menuCard?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
     console.log(itemCards)
     return(
         <div className="menu_card">

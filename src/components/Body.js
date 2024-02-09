@@ -35,7 +35,7 @@ const Body = () => {
                 </div>
                 <button id="filter-btn" 
                 onClick={()=>{
-                    const filteredData = state.filter((resto)=>resto?.info?.avgRating>4.3)
+                    const filteredData = state.filter((resto)=>resto?.info?.avgRating>4)
                     setFilteredRestaurant(filteredData);
                 }}>Top Rated</button>
             </div>
@@ -43,7 +43,7 @@ const Body = () => {
                 {
                     // map filtered
                     filteredRestaurant.map((resto)=>(
-                        <Link to={"/restaurant/"+resto?.info.parentId}><RestaurantCard key={resto?.info.parentId} restList={resto}/></Link>
+                        <Link key={resto?.info.parentId} to={"/restaurant/"+resto?.info.parentId}><RestaurantCard restList={resto}/></Link>
                         )
                     )
                 }           

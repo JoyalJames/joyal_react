@@ -87,7 +87,14 @@
 }
 .about{
     padding-top: 17%;
+
+}
+.about_user{
+    border: 1px solid black;
+
 }
 .menu_card{
     padding-top: 17%;
+    border-radius: 4px;
+    background-color: rgb(224, 229, 229);
 }
