@@ -18,8 +18,8 @@ class About extends Component{
             <div className="about">
                 <h1>About Page</h1>
                 <h2>Welcome To Joyals Page</h2>
-                {/* <User/> */}
-                <UserClass/>
+                <User/>
+                {/* <UserClass/> */}
             </div>
         )
     }

@@ -1,6 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const User = ()=>{
     const [count] = useState(0);
+    useEffect(()=>{
+        const timer = setInterval(() => {
+            console.log("time")
+        }, 1000);
+        return ()=>{
+            clearInterval(timer)
+        }
+    },[])
     return (
         <div className="about_user">
             <h1>{count}</h1>
