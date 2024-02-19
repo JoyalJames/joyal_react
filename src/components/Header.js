@@ -7,7 +7,7 @@ const Header = () =>{
     const [state, setState] = useState("Login");
     const onlineStatus = useOnlineStatus();
     return(
-    <div className="header">
+    <div className="position: fixed justify-between flex  bg-white w-[100%]">
         <div className="logo-container">
             <img className="logo" src={LOGO_URL}/>
         </div>
