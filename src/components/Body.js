@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+// import { withPromotedLabel } from "./RestaurantCard";
 
 const Body = () => {
     const [state,setState]=useState([]);
@@ -13,6 +14,7 @@ const Body = () => {
         fetchData();
     },[]);
 
+    // const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
     const fetchData = async ()=>{
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=9.591566799999999&lng=76.5221531&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
@@ -45,6 +47,7 @@ const Body = () => {
                 {
                     // map filtered
                     filteredRestaurant.map((resto)=>(
+                        // resto.data.promoted ? <RestaurantCardPromoted restList={resto}/> : 
                         <Link key={resto?.info.parentId} to={"/restaurant/"+resto?.info.parentId}><RestaurantCard restList={resto}/></Link>
                         )
                     )
