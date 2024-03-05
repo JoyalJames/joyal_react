@@ -18,9 +18,11 @@ const RestroMenu = ()=>{
             <h3>{avgRating}</h3>
             <h3>{areaName}</h3>
             <h3>{ratingSlab}</h3>
-            <h3>jiii
+            <h3>
+                {/* CONTROLLED STATEMENT */}
             {
-                categories.map((category)=><RestaurantCategory data={category.card.card}/>)
+                categories.map((category,index)=>
+                    <RestaurantCategory key={category.card.card.title} data={category.card.card} showItem={index===0 && true}/>)
             }
             </h3>
        
