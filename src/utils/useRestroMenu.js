@@ -8,8 +8,9 @@ const useRestroMenu=(resId)=>{
     const fetchMenu = async ()=>{
         const data = await fetch(MENU_API + resId)
         const json = await data.json();
-        console.log(json.data.cards[0].card.card.info);
-        console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
+        // console.log(json.data.cards);
+        // console.log(json.data.cards[0].card.card.info);
+        // console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
         setMenuCard(json.data);
 
     }
